@@ -1,73 +1,90 @@
-# React + TypeScript + Vite
+# mongle-preview
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+mongle-ui 컴포넌트 라이브러리의 조화를 검증하기 위한 쇼케이스 앱.
 
-Currently, two official plugins are available:
+## 로컬 실행
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
-
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+pnpm install
+pnpm dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+---
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## 쇼케이스 페이지
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+### 1. 팀 대시보드 (Team Dashboard)
+
+팀 현황을 한눈에 보여주는 대시보드.
+
+**사용 컴포넌트**
+- `Grid` — 통계 카드 4개, 팀원 카드 그리드 배치
+- `Card` / `CardHeader` / `CardContent` / `CardFooter` — 통계·팀원·활동 카드
+- `Avatar` / `AvatarGroup` — 팀원 프로필
+- `Badge` — 역할(Dev/Design/PM/QA), 온라인 상태
+- `Icon` — 활동 피드 아이콘 (GitPullRequest, CheckCircle, MessageSquare 등)
+- `Divider` — 활동 피드 구분선
+- `Typography` — 헤딩, 수치, 설명 텍스트
+- `Stack` — 활동 피드 수직 레이아웃
+- `Button` — 상세보기, 팀원 초대
+
+---
+
+### 2. 소셜 피드 (Social Feed)
+
+팀 내 소통 피드. 스토리 바 + 게시물 카드 + 추천 팔로우 사이드바.
+
+**사용 컴포넌트**
+- `Avatar` / `AvatarGroup` — 스토리 바, 게시물 작성자
+- `Card` / `CardHeader` / `CardContent` / `CardFooter` — 게시물 카드, 추천 유저 카드
+- `Badge` — 직군 태그(Dev/Design/PM), 새 알림 표시
+- `Button` — 좋아요, 댓글, 공유, 팔로우
+- `IconButton` — 좋아요(Heart), 댓글(MessageCircle), 공유(Share2), 북마크(Bookmark)
+- `Icon` — 각종 액션 아이콘
+- `Divider` — 섹션 구분
+- `Typography` — 본문, 작성자명, 시간
+- `Stack` / `Grid` — 레이아웃
+
+---
+
+### 3. 칸반 보드 (Kanban Board)
+
+프로젝트 태스크 관리 보드. 4개 상태 컬럼에 태스크 카드.
+
+**사용 컴포넌트**
+- `Card` / `CardHeader` / `CardContent` — 태스크 카드
+- `Badge` — 우선순위(긴급/보통/낮음), 진행 상태
+- `Avatar` — 담당자 프로필
+- `IconButton` — 태스크 액션 (편집, 삭제, 첨부)
+- `Icon` — 상태 아이콘, 태그 아이콘
+- `Button` — 필터 탭, 태스크 추가
+- `Typography` — 태스크 제목, 설명, 메타 정보
+- `Stack` / `Grid` — 컬럼 레이아웃
+- `Divider` — 컬럼 헤더 구분
+- `Paper` — 컬럼 배경
+
+---
+
+### 4. 이커머스 상품 목록 (Product Catalog)
+
+상품 카드 그리드 + 카테고리 사이드바 + 필터 탭.
+
+**사용 컴포넌트**
+- `Card` / `CardHeader` / `CardContent` / `CardFooter` — 상품 카드
+- `Badge` — 신상품, 세일, 품절, 인기 태그
+- `Button` — 필터 탭, 담기, 좋아요
+- `IconButton` — 위시리스트(Heart), 검색(Search)
+- `Icon` — 카테고리 아이콘, 별점 아이콘
+- `Typography` — 상품명, 가격, 설명
+- `Stack` / `Grid` — 사이드바 + 그리드 레이아웃
+- `Divider` — 카테고리 섹션 구분
+- `Paper` — 필터 사이드바 배경
+- `Avatar` — 셀러 프로필 (소형)
+
+---
+
+## 컴포넌트 라이브러리
+
+- **라이브러리**: [mongle-ui Storybook](https://hyeon1445.github.io/mongle-ui)
+- **버전**: 0.1.0
+- **스택**: React 19 + TypeScript + TailwindCSS v4
