@@ -4,7 +4,7 @@
       "command": "npx",
       "args": ["-y", "@storybook/mcp@latest"],
       "env": {
-        "STORYBOOK_URL": "http://localhost:6006"
+        "STORYBOOK_URL": "https://hyeon1445.github.io/mongle-ui"
       }
     }
   }
