@@ -76,7 +76,7 @@ function App() {
             <Button
               key={item.id}
               variant={currentPage === item.id ? 'soft' : 'ghost'}
-              color={currentPage === item.id ? 'primary' : 'secondary'}
+              color={currentPage === item.id ? 'primary' : 'neutral'}
               leftIcon={<Icon icon={item.icon} size="sm" />}
               fullWidth
               className="justify-start"
@@ -97,7 +97,7 @@ function App() {
           </Typography>
           <Button
             variant="ghost"
-            color="secondary"
+            color="neutral"
             leftIcon={<Icon icon={Bell} size="sm" />}
             fullWidth
             className="justify-start"
@@ -109,7 +109,7 @@ function App() {
           </Button>
           <Button
             variant="ghost"
-            color="secondary"
+            color="neutral"
             leftIcon={<Icon icon={Settings} size="sm" />}
             fullWidth
             className="justify-start"
