@@ -8,3 +8,21 @@
 body {
   margin: 0;
 }
+
+/* Reaction pop animation */
+@keyframes reaction-pop {
+  0%   { transform: scale(1); }
+  40%  { transform: scale(1.35); }
+  70%  { transform: scale(0.9); }
+  100% { transform: scale(1); }
+}
+
+@theme {
+  --animate-reaction-pop: reaction-pop 0.3s ease-out;
+}
+
+@utility scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  &::-webkit-scrollbar { display: none; }
+}
