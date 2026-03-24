@@ -1,0 +1,49 @@
+name: Auto Bump Version
+
+on:
+  push:
+    branches: [main]
+    paths-ignore:
+      - 'package.json'
+
+jobs:
+  bump:
+    if: "!startsWith(github.event.head_commit.message, 'chore: bump')"
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Bump patch version
+        id: bump
+        run: |
+          NEW_VERSION=$(node -e "
+            const fs = require('fs');
+            const pkg = JSON.parse(fs.readFileSync('package.json', 'utf8'));
+            const [major, minor, patch] = pkg.version.split('.');
+            pkg.version = \`\${major}.\${minor}.\${parseInt(patch) + 1}\`;
+            fs.writeFileSync('package.json', JSON.stringify(pkg, null, 2) + '\n');
+            console.log(pkg.version);
+          ")
+          echo "version=$NEW_VERSION" >> $GITHUB_OUTPUT
+
+      - name: Create bump PR
+        run: |
+          BRANCH="bump/v${{ steps.bump.outputs.version }}"
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git checkout -b $BRANCH
+          git add package.json
+          git commit -m "chore: bump version to v${{ steps.bump.outputs.version }}"
+          git push origin $BRANCH
+          gh pr create \
+            --title "chore: bump version to v${{ steps.bump.outputs.version }}" \
+            --body "Auto-generated version bump after merge to main." \
+            --base main \
+            --head $BRANCH
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
