@@ -46,7 +46,19 @@ const chartData = {
 const chartOptions = {
   responsive: true,
   maintainAspectRatio: false,
-  animation: { duration: 1000, easing: 'easeInOutQuart' as const },
+  animation: {
+    duration: 1000,
+    easing: 'easeOutQuart' as const,
+  },
+  animations: {
+    y: {
+      easing: 'easeOutQuart' as const,
+      duration: 1000,
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      from: (ctx: any) => ctx.chart?.scales?.y?.bottom,
+    },
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  } as any,
   plugins: {
     legend: {
       position: 'top' as const,
