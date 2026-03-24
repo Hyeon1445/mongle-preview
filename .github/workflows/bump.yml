@@ -17,11 +17,16 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Bump patch version
-        run: npm version patch --no-git-tag-version
+        id: bump
+        run: |
+          npm version patch --no-git-tag-version
+          echo "version=$(node -p "require('./package.json').version")" >> $GITHUB_OUTPUT
 
       - uses: peter-evans/create-pull-request@v7
         with:
-          commit-message: "chore: bump version"
-          branch: bump/version
-          title: "chore: bump version"
-          body: "Auto-generated version bump after merge to main."
+          commit-message: "chore: bump version to v${{ steps.bump.outputs.version }}"
+          branch: bump/v${{ steps.bump.outputs.version }}
+          title: "chore: bump version to v${{ steps.bump.outputs.version }}"
+          body: |
+            Triggered by: ${{ github.event.head_commit.message }}
+            Commit: ${{ github.sha }}
