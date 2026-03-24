@@ -1,6 +1,6 @@
 import { NavLink } from 'react-router-dom'
 import { Avatar, Badge, Button, Divider, Icon, IconButton, Paper, Stack, Typography } from 'mongle-ui'
-import { Bell, KanbanSquare, LayoutDashboard, MessageSquare, MoreHorizontal, Settings, ShoppingBag, X } from 'lucide-react'
+import { Bell, KanbanSquare, LayoutDashboard, MessageSquare, MoreHorizontal, Settings, ShoppingBag, UserCircle, X } from 'lucide-react'
 import type { LucideIcon } from 'lucide-react'
 
 const navItems: { path: string; label: string; icon: LucideIcon }[] = [
@@ -8,6 +8,7 @@ const navItems: { path: string; label: string; icon: LucideIcon }[] = [
   { path: '/social', label: '소셜 피드', icon: MessageSquare },
   { path: '/kanban', label: '칸반 보드', icon: KanbanSquare },
   { path: '/catalog', label: '상품 목록', icon: ShoppingBag },
+  { path: '/settings', label: '프로필 설정', icon: UserCircle },
 ]
 
 interface SidebarProps {

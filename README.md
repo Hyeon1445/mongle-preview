@@ -47,7 +47,28 @@ pnpm dev
 
 ---
 
-### 3. 칸반 보드 (Kanban Board)
+### 3. 프로필 설정 (Profile Settings)
+
+계정 정보 입력·수정 중심의 설정 페이지. 프로필 / 알림 / 보안 탭으로 구성.
+
+**사용 컴포넌트**
+- `TextField` — 이름, 이메일, 직책, 소개, 웹사이트 (label, description, error, leftElement)
+- `PasswordField` — 현재/새/확인 비밀번호 (description, error)
+- `NumberField` — 경력 입력 (min, max, step)
+- `Avatar` / `AvatarGroup` — 프로필 사진, 팀원 목록
+- `Badge` — 역할, 온라인 상태, 알림 카운트, 보안 현황
+- `Card` — elevated(기본 정보), outlined(추가 정보·보안 현황)
+- `ProgressBar` — 이번 달 알림 유형별 현황
+- `Button` — 탭 전환(soft/ghost), 저장·취소, 알림 on/off 토글
+- `Transition` — 저장 완료 메시지 fade in/out
+- `Paper` — 탭 네비게이션 컨테이너
+- `Skeleton` — 프로필 카드 로딩 상태
+- `Divider` — 알림 항목·보안 현황 구분선
+- `Stack` / `Icon` / `Typography` — 전체 레이아웃
+
+---
+
+### 4. 칸반 보드 (Kanban Board)
 
 프로젝트 태스크 관리 보드. 4개 상태 컬럼에 태스크 카드.
 
@@ -86,5 +107,5 @@ pnpm dev
 ## 컴포넌트 라이브러리
 
 - **라이브러리**: [mongle-ui Storybook](https://hyeon1445.github.io/mongle-ui)
-- **버전**: 0.1.0
+- **버전**: 0.2.3
 - **스택**: React 19 + TypeScript + TailwindCSS v4
