@@ -165,7 +165,7 @@ export default function PostCard({ isLoading, data }: PostCardProps) {
         <Stack direction="horizontal" align="center" justify="between">
           <Stack direction="horizontal" gap={3} align="center">
             <Avatar name={post.author} color={post.avatarColor} size="md" />
-            <Stack direction="vertical" gap={0.5}>
+            <Stack direction="vertical" gap={1}>
               <Stack direction="horizontal" gap={2} align="center">
                 <Typography variant="subtitle2">{post.author}</Typography>
                 <Badge color={post.roleColor} variant="soft" size="sm">{post.role}</Badge>
@@ -184,7 +184,7 @@ export default function PostCard({ isLoading, data }: PostCardProps) {
 
         {/* Hashtags */}
         {post.hashtags.length > 0 && (
-          <Stack direction="horizontal" gap={1.5} wrap className="mt-2">
+          <Stack direction="horizontal" gap={2} wrap className="mt-2">
             {post.hashtags.map((tag) => (
               <Badge key={tag} color="info" variant="soft" size="sm">#{tag}</Badge>
             ))}

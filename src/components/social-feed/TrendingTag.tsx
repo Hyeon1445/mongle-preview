@@ -28,7 +28,7 @@ export default function TrendingTag({ isLoading, data }: TrendingTagProps) {
   return (
     <button className="w-full text-left rounded-lg py-2 px-3 hover:bg-primary-50 transition-colors group cursor-pointer">
       <Stack direction="horizontal" align="center" justify="between">
-        <Stack direction="vertical" gap={0.5}>
+        <Stack direction="vertical" gap={1}>
           <Typography variant="subtitle2" className="group-hover:text-primary-600 transition-colors">
             #{data!.tag}
           </Typography>
