@@ -1,0 +1,43 @@
+name: Auto Bump Version
+
+on:
+  push:
+    branches: [main]
+    paths-ignore:
+      - 'package.json'
+
+jobs:
+  bump:
+    if: "!startsWith(github.event.head_commit.message, 'chore: bump')"
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Bump patch version
+        id: bump
+        run: |
+          npm version patch --no-git-tag-version
+          echo "version=$(node -p "require('./package.json').version")" >> $GITHUB_OUTPUT
+
+      - name: Get commits since last release
+        id: changelog
+        run: |
+          LAST_BUMP=$(git log --oneline -- package.json | head -1 | awk '{print $1}')
+          COMMITS=$(git log --oneline ${LAST_BUMP}..HEAD --no-merges --format="- %s")
+          echo "list<<EOF" >> $GITHUB_OUTPUT
+          echo "$COMMITS" >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
+
+      - uses: peter-evans/create-pull-request@v7
+        with:
+          commit-message: "chore: bump version to v${{ steps.bump.outputs.version }}"
+          branch: bump/v${{ steps.bump.outputs.version }}
+          title: "Release v${{ steps.bump.outputs.version }}"
+          body: |
+            ## Changes
+            ${{ steps.changelog.outputs.list }}
