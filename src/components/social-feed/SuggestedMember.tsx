@@ -34,8 +34,8 @@ export default function SuggestedMember({ isLoading, data }: SuggestedMemberProp
   return (
     <Stack direction="horizontal" align="center" gap={3} className="py-2">
       <Avatar name={data!.name} color={data!.avatarColor} size="md" />
-      <Stack direction="vertical" gap={0.5} className="flex-1 min-w-0">
-        <Stack direction="horizontal" gap={1.5} align="center">
+      <Stack direction="vertical" gap={1} className="flex-1 min-w-0">
+        <Stack direction="horizontal" gap={2} align="center">
           <Typography variant="subtitle2" ellipsis>{data!.name}</Typography>
           <Badge color={data!.roleColor} variant="soft" size="sm">{data!.role}</Badge>
         </Stack>

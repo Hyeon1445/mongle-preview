@@ -32,7 +32,7 @@ export default function CommentItem({ isLoading, data, last }: CommentItemProps)
       ) : (
         <Stack direction="horizontal" align="start" gap={2} className="py-2.5">
           <Avatar name={data!.user} color={data!.avatarColor} size="sm" />
-          <Stack direction="vertical" gap={0.5} className="flex-1 min-w-0">
+          <Stack direction="vertical" gap={1} className="flex-1 min-w-0">
             <Stack direction="horizontal" gap={2} align="center">
               <Typography variant="subtitle2">{data!.user.split(' ')[0]}</Typography>
               <Typography variant="caption" color="disabled">{data!.time}</Typography>
