@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { Badge, Button, Card, Divider, Grid, Icon, IconButton, Stack, Transition, Typography } from 'mongle-ui'
+import { Badge, Button, Card, Divider, Icon, IconButton, Stack, Transition, Typography } from 'mongle-ui'
 import type { Color } from 'mongle-ui'
 import {
   AlertCircle,
@@ -101,18 +101,18 @@ export default function TeamDashboard() {
   }, [])
 
   return (
-    <div className="p-8">
+    <div className="p-4 sm:p-8">
       {/* Header */}
-      <Stack direction="horizontal" align="center" justify="between" className="mb-8">
+      <div className="mb-8 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <Stack direction="vertical" gap={1}>
           <Typography variant="heading2">팀 대시보드</Typography>
-          <Stack direction="horizontal" gap={2} align="center">
+          <Stack direction="horizontal" gap={2} align="center" className="flex-wrap">
             <Typography variant="body2" color="secondary">2026년 3월 23일 월요일</Typography>
             <Badge color="success" variant="soft" size="sm">온라인 3명</Badge>
             <Badge color="info" variant="soft" size="sm">스프린트 3</Badge>
           </Stack>
         </Stack>
-        <Stack direction="horizontal" gap={2} align="center">
+        <Stack direction="horizontal" gap={2} align="center" className="flex-wrap">
           <IconButton icon={Bell} variant="outline" size="sm" />
           <Button variant="outline" size="sm" leftIcon={<Icon icon={Calendar} size="sm" />}>
             일정 보기
@@ -121,24 +121,24 @@ export default function TeamDashboard() {
             팀원 초대
           </Button>
         </Stack>
-      </Stack>
+      </div>
 
       {/* Stat Cards */}
-      <Grid columns={4} gap={4} className="mb-8">
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
         {loading
           ? Array.from({ length: 4 }).map((_, i) => <StatCard key={i} isLoading />)
           : stats.map((stat) => <StatCard key={stat.label} {...stat} />)}
-      </Grid>
+      </div>
 
       {/* Chart Section */}
-      <Grid columns={3} gap={6} className="mb-8">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
         <ActivityTrendCard isLoading={loading} />
         <ProjectProgressCard isLoading={loading} projects={projects} />
-      </Grid>
+      </div>
 
       {/* Projects + Team Members */}
-      <Grid columns={3} gap={6} className="mb-8">
-        <div className="col-span-2">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+        <div className="md:col-span-2">
           <Stack direction="horizontal" align="center" justify="between" className="mb-4">
             <Stack direction="horizontal" align="center" gap={2}>
               <Typography variant="heading4">진행 중인 프로젝트</Typography>
@@ -170,7 +170,7 @@ export default function TeamDashboard() {
             </Card.Content>
           </Card>
         </div>
-      </Grid>
+      </div>
 
       {/* Activity Feed */}
       <div>
