@@ -7,6 +7,7 @@ import ComingSoon from './components/common/ComingSoon'
 import TeamDashboard from './pages/TeamDashboard'
 import SocialFeed from './pages/SocialFeed'
 import ProfileSettings from './pages/ProfileSettings'
+import KanbanBoard from './pages/KanbanBoard'
 
 function App() {
   const [sidebarOpen, setSidebarOpen] = useState(false)
@@ -41,7 +42,7 @@ function App() {
           <Route path="/" element={<TeamDashboard />} />
           <Route path="/social" element={<SocialFeed />} />
           <Route path="/settings" element={<ProfileSettings />} />
-          <Route path="/kanban" element={<ComingSoon />} />
+          <Route path="/kanban" element={<KanbanBoard />} />
           <Route path="/catalog" element={<ComingSoon />} />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
