@@ -1,5 +1,5 @@
-@import 'tailwindcss';
 @import 'mongle-ui/styles.css';
+@import 'tailwindcss';
 
 * {
   box-sizing: border-box;
