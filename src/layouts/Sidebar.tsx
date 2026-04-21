@@ -1,13 +1,13 @@
 import { NavLink } from 'react-router-dom'
 import { Avatar, Badge, Button, Divider, Icon, IconButton, Paper, Stack, Typography } from 'mongle-ui'
-import { Bell, KanbanSquare, LayoutDashboard, MessageSquare, MoreHorizontal, Settings, ShoppingBag, UserCircle, X } from 'lucide-react'
+import { Bell, FolderOpen, KanbanSquare, LayoutDashboard, MessageSquare, MoreHorizontal, Settings, UserCircle, X } from 'lucide-react'
 import type { LucideIcon } from 'lucide-react'
 
 const navItems: { path: string; label: string; icon: LucideIcon }[] = [
   { path: '/', label: '팀 대시보드', icon: LayoutDashboard },
   { path: '/social', label: '소셜 피드', icon: MessageSquare },
   { path: '/kanban', label: '칸반 보드', icon: KanbanSquare },
-  { path: '/catalog', label: '상품 목록', icon: ShoppingBag },
+  { path: '/catalog', label: '파일 목록', icon: FolderOpen },
   { path: '/settings', label: '프로필 설정', icon: UserCircle },
 ]
 
